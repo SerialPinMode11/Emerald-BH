@@ -33,8 +33,8 @@ Multi-role property rental platform built with Laravel and Vue. Connects tenants
 ## Installation
 
 ```bash
-git clone <your-repo-url>
-cd emerald-bh
+git clone https://github.com/SerialPinMode11/Emerald-BH.git
+cd Emerald-BH
 
 composer install
 cp .env.example .env
