@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Housing | Super Admin Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Roboto+Flex:wght@400;500&amp;family=Fira+Sans:wght@400;500&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(253, 247, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-card-dark {
+            background: rgba(29, 27, 32, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        body {
+            background-image: radial-gradient(circle at 0% 0%, rgba(196, 69, 54, 0.05) 0%, transparent 50%),
+                              radial-gradient(circle at 100% 100%, rgba(103, 80, 164, 0.05) 0%, transparent 50%);
+            min-height: 100vh;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#ded8e0",
+                      "secondary": "#63597c",
+                      "on-tertiary-fixed": "#241a00",
+                      "primary-container": "#6750a4",
+                      "on-primary-container": "#e0d2ff",
+                      "surface-tint": "#6750a4",
+                      "on-error-container": "#93000a",
+                      "background": "#fdf7ff",
+                      "secondary-container": "#e1d4fd",
+                      "primary": "#C44536", /* Overridden per user request */
+                      "tertiary-container": "#c9a74d",
+                      "surface-container-low": "#f8f2fa",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#22005d",
+                      "tertiary-fixed-dim": "#e7c365",
+                      "on-tertiary-fixed-variant": "#594400",
+                      "on-surface": "#1d1b20",
+                      "surface-bright": "#fdf7ff",
+                      "secondary-fixed": "#e9ddff",
+                      "primary-fixed": "#e9ddff",
+                      "on-secondary-container": "#645a7d",
+                      "on-primary-fixed-variant": "#4f378a",
+                      "error": "#ba1a1a",
+                      "surface": "#fdf7ff",
+                      "on-secondary-fixed": "#1f1635",
+                      "surface-variant": "#e6e0e9",
+                      "tertiary-fixed": "#ffdf93",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#322f35",
+                      "secondary-fixed-dim": "#cdc0e9",
+                      "surface-container-highest": "#e6e0e9",
+                      "outline": "#7a7582",
+                      "surface-container": "#f2ecf4",
+                      "on-background": "#1d1b20",
+                      "inverse-primary": "#cfbcff",
+                      "outline-variant": "#cbc4d2",
+                      "on-tertiary-container": "#503d00",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#494551",
+                      "primary-fixed-dim": "#cfbcff",
+                      "inverse-on-surface": "#f5eff7",
+                      "on-secondary-fixed-variant": "#4b4263",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#765b00",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#ece6ee"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-xs": "4px",
+                      "margin-mobile": "16px",
+                      "stack-md": "16px",
+                      "gutter": "24px",
+                      "base": "8px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "body-md": ["Roboto Flex"],
+                      "display-lg-mobile": ["Inter"],
+                      "label-sm": ["Fira Sans"],
+                      "code-sm": ["JetBrains Mono"],
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Roboto Flex"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/30 shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-md">home_work</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Emerald Housing</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-white/20 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<img alt="Super Admin Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="A professional studio portrait of a high-level corporate executive in their late 40s. The lighting is soft and cinematic, with a clean, blurred modern office background. The overall aesthetic is bright and high-key, aligning with a premium professional service and a minimalist light-mode user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDob578g0uUBXGPKvBFiOlMdE1hsOdx_H9o9dtc4y_Msz4v3OyqQQWjmxRlJ-whjDxJyCRF4v3KvkAdGeWRknPJ6wE0LDmnEyePoi6wEJtQ3s8HUw4Xdicb2cMcT_0VoBFLA1dI4MjDom2uiMRpMeGaqweI27wlZkyyW90XIxWhq8NFwShEEkWiBQuyNtHhooSICfKeH8ywEW6w3mN0lmTkSl_mJ18_3J3OkKRZvakRvPwhrWi8678889C1pJ7dwMdG0mbzPloyx4Q"/>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Desktop Only) -->
+<aside class="hidden md:flex fixed left-0 top-16 bottom-0 w-72 flex-col py-6 bg-surface/80 backdrop-blur-2xl border-r border-white/30 z-40">
+<div class="px-6 mb-8">
+<h2 class="font-headline-md text-headline-md text-primary">Admin Console</h2>
+<p class="text-label-sm text-on-surface-variant">Super Admin Access • v2.4.0</p>
+</div>
+<nav class="flex flex-col gap-1 px-2">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-bold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-lg px-4 py-3" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-body-md">Approvals</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-lg px-4 py-3" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Users</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-lg px-4 py-3" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-md">Finance</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-lg px-4 py-3" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-body-md">Developer Tools</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-24 md:pb-8 px-margin-mobile md:pl-[calc(18rem+margin-desktop)] md:pr-margin-desktop max-w-screen-2xl mx-auto">
+<!-- Hero / Headline -->
+<section class="mb-stack-lg">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">System Overview</h2>
+<p class="text-body-lg text-on-surface-variant">Welcome back, Administrator. Here's the current state of the Emerald ecosystem.</p>
+</section>
+<!-- Bento Grid: Stats -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-stack-lg">
+<div class="glass-card p-6 rounded-xl flex flex-col gap-2 relative overflow-hidden group hover:scale-[1.02] transition-transform">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">home_work</span>
+</div>
+<p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Pending Approvals</p>
+<h3 class="text-display-lg font-display-lg text-primary">08</h3>
+<div class="flex items-center gap-1 text-on-error-container text-label-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+2 from yesterday</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex flex-col gap-2 relative overflow-hidden group hover:scale-[1.02] transition-transform">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">gavel</span>
+</div>
+<p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">Active Disputes</p>
+<h3 class="text-display-lg font-display-lg text-secondary">03</h3>
+<div class="flex items-center gap-1 text-secondary text-label-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span>System health stable</span>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex flex-col gap-2 relative overflow-hidden group hover:scale-[1.02] transition-transform">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl">person_add</span>
+</div>
+<p class="text-label-sm font-label-sm uppercase tracking-wider text-on-surface-variant">New Registrations</p>
+<h3 class="text-display-lg font-display-lg text-on-tertiary-container">12</h3>
+<div class="flex items-center gap-1 text-tertiary text-label-sm">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Last 24 hours</span>
+</div>
+</div>
+</section>
+<!-- Main Workspace: Priority Approvals & Mediator Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Priority Approvals (8 columns) -->
+<section class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="flex justify-between items-end">
+<h3 class="font-headline-md text-headline-md text-on-surface">Priority Approvals</h3>
+<a class="text-primary font-bold text-label-sm hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Property Card 1 -->
+<div class="glass-card p-4 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:shadow-md transition-shadow">
+<img alt="Luxury Villa" class="w-full md:w-32 h-32 rounded-lg object-cover" data-alt="A high-end modern luxury villa with floor-to-ceiling glass walls and a pristine infinity pool, shot during the golden hour. The architecture is minimalist with clean lines and premium natural materials. The lighting is warm and inviting, contrasted by a sophisticated cool-toned sky, creating a feeling of exclusive professional real estate excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3UHF7RE5yBuH3DrjrtdaphEqoIBcaSbYx7GJavA2L1HK1tZGrd8_riNdYPJpRiGuOgXhJAOwoMtyXyeQZPnl9S-YFJMbeDuWTxBagqJK-0IbMnT7p7YRGGEbg5GkiZq1Pki12apcanBUxbGi1RK4YSUQvkJfLOYt1vxs_rBeBTIYyUkiANioTRhzkQKMkCVFqIWEJashDhDGmOEms9vx84SimtMhFUjxpzNOe4L65FxRN_YGNghBJBzYQAtbAl4gX9JVraN_5yHE"/>
+<div class="flex-1 text-center md:text-left">
+<h4 class="font-headline-md text-on-surface mb-1">Azure Sky Penthouse</h4>
+<p class="text-body-md text-on-surface-variant">Owner: <span class="font-bold">Julian Sterling</span></p>
+<p class="text-primary font-bold text-body-lg mt-2">$4,200 / month</p>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full border border-error text-error font-bold hover:bg-error/5 transition-colors active:scale-95">Reject</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full bg-primary text-white font-bold hover:brightness-110 shadow-lg shadow-primary/20 transition-all active:scale-95">Approve</button>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="glass-card p-4 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:shadow-md transition-shadow">
+<img alt="Urban Loft" class="w-full md:w-32 h-32 rounded-lg object-cover" data-alt="A stylish industrial-chic urban loft with exposed brick walls, massive factory-style windows, and sleek contemporary furniture. The interior is flooded with bright, natural daylight, emphasizing a sense of space and modern urban living. The color palette is neutral with high-contrast elements, radiating a trendy yet professional vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwc3TiEtYU8nZeGtNhduer443lPFi1o1navBY3TJS8lsSmaV2cqZtR5icqFM3P5PRgQk18Qu-wJI3ASx8cjmebRznaEj1-DdFvdJ8MYFgaVCtNTnJ0edchrADQHaGTP4ZiDjV5jrJQopsouYpufcyqb6peNMKAm8Aet4uBhZwNC2wzkAX28NwygcJpoVId4NxEnRlG6rUSAZz-a5fNP9CGoUrI3ly4RUOQ_g9NH4pmtfDOCqNlMUI9Y2JEFkS9PAgsw2Kqr4pEjpE"/>
+<div class="flex-1 text-center md:text-left">
+<h4 class="font-headline-md text-on-surface mb-1">Foundry Loft A12</h4>
+<p class="text-body-md text-on-surface-variant">Owner: <span class="font-bold">Sarah Chen</span></p>
+<p class="text-primary font-bold text-body-lg mt-2">$2,850 / month</p>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full border border-error text-error font-bold hover:bg-error/5 transition-colors active:scale-95">Reject</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full bg-primary text-white font-bold hover:brightness-110 shadow-lg shadow-primary/20 transition-all active:scale-95">Approve</button>
+</div>
+</div>
+<!-- Property Card 3 -->
+<div class="glass-card p-4 rounded-xl flex flex-col md:flex-row gap-6 items-center hover:shadow-md transition-shadow">
+<img alt="Suburban Home" class="w-full md:w-32 h-32 rounded-lg object-cover" data-alt="A modern suburban family residence featuring a clean white exterior, a perfectly manicured green lawn, and architectural accent lighting. The scene is set in early evening with a soft blue dusk sky, highlighting the warmth of the interior lights visible through large windows. The overall mood is peaceful, secure, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6O6t9K1aBWiUV_6EatQCQ4oqiaSCdx9rN-Oo5YYIoFW2lYM8PTFIMjGt08YJXVJofYYermccxRM4sax-Ccoxdm51mnKdOVZpxiXNXcZZcBxgCF7GNOJ3cYSEFuy9c-X9XqTLNy7zLbq_BH3jZctPudoXH82BmWN5MLLsV0umyAD490J643Q4efJHolRUvhn2jOV_sXG7DAL_GGBnQTyFb38cSOX8sPZcNy4zCEctJKpbOtRPzUEbDZTI28ARBUMPmGQvba58Ry1A"/>
+<div class="flex-1 text-center md:text-left">
+<h4 class="font-headline-md text-on-surface mb-1">Willow Creek Estate</h4>
+<p class="text-body-md text-on-surface-variant">Owner: <span class="font-bold">Robert Miller</span></p>
+<p class="text-primary font-bold text-body-lg mt-2">$5,100 / month</p>
+</div>
+<div class="flex gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full border border-error text-error font-bold hover:bg-error/5 transition-colors active:scale-95">Reject</button>
+<button class="flex-1 md:flex-none px-6 py-2 rounded-full bg-primary text-white font-bold hover:brightness-110 shadow-lg shadow-primary/20 transition-all active:scale-95">Approve</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Mediator & Health (4 columns) -->
+<aside class="lg:col-span-4 flex flex-col gap-8">
+<!-- Mediator Section -->
+<div class="glass-card p-6 rounded-2xl">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary">support_agent</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Assign Mediator</h3>
+</div>
+<div class="flex flex-col gap-4">
+<div class="p-4 rounded-xl bg-surface-variant/30 border border-white/20">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-sm font-bold bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">ID: #RE-9021</span>
+<span class="text-label-sm text-on-surface-variant">2h ago</span>
+</div>
+<p class="text-body-md font-bold text-on-surface">Agreement: Lakeview Drive</p>
+<p class="text-label-sm text-on-surface-variant mb-4">Conflict: Security Deposit Terms</p>
+<button class="w-full py-2 rounded-lg bg-secondary text-white text-label-sm font-bold hover:brightness-110 transition-all">Assign Agent</button>
+</div>
+<div class="p-4 rounded-xl bg-surface-variant/30 border border-white/20">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-sm font-bold bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">ID: #RE-8843</span>
+<span class="text-label-sm text-on-surface-variant">5h ago</span>
+</div>
+<p class="text-body-md font-bold text-on-surface">Agreement: Midtown Studio</p>
+<p class="text-label-sm text-on-surface-variant mb-4">Conflict: Maintenance Delay</p>
+<button class="w-full py-2 rounded-lg bg-secondary text-white text-label-sm font-bold hover:brightness-110 transition-all">Assign Agent</button>
+</div>
+</div>
+</div>
+<!-- Global Health Panel -->
+<div class="glass-card p-6 rounded-2xl bg-on-surface/5">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">System Health</h3>
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-body-md text-on-surface-variant">API Gateways</span>
+</div>
+<span class="font-code-sm text-code-sm text-green-600">99.9%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-body-md text-on-surface-variant">Database Latency</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface">24ms</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<span class="text-body-md text-on-surface-variant">Storage Capacity</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface">82%</span>
+</div>
+<div class="pt-4 border-t border-on-surface/10">
+<div class="flex justify-between items-center mb-2">
+<span class="text-label-sm text-on-surface-variant">Current Load</span>
+<span class="text-label-sm font-bold">Medium</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-t border-white/30 shadow-lg rounded-t-xl h-20 flex justify-around items-center px-4 pb-safe">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">verified</span>
+<span class="font-label-sm text-label-sm">Approvals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-label-sm text-label-sm">Switch</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+
+        // Simple observer for fade-in animations on cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-500', 'opacity-0', 'translate-y-4');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

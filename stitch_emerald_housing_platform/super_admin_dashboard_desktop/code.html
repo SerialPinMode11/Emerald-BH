@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emerald Housing | Super Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Roboto+Flex:wght@400;500&amp;family=Fira+Sans:wght@400;500&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(186, 26, 26, 0.05); /* Tinted with error color for Red Theme requirement */
+            border-right: 1px solid rgba(186, 26, 26, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background: radial-gradient(circle at top right, #f2ecf4, #fdf7ff);
+            min-height: 100vh;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#765b00",
+                      "secondary": "#63597c",
+                      "on-background": "#1d1b20",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#e9ddff",
+                      "on-surface-variant": "#494551",
+                      "inverse-surface": "#322f35",
+                      "primary-fixed-dim": "#cfbcff",
+                      "inverse-primary": "#cfbcff",
+                      "primary": "#4f378a",
+                      "outline-variant": "#cbc4d2",
+                      "surface-bright": "#fdf7ff",
+                      "secondary-container": "#e1d4fd",
+                      "on-primary-container": "#e0d2ff",
+                      "on-surface": "#1d1b20",
+                      "tertiary-fixed-dim": "#e7c365",
+                      "on-secondary-fixed-variant": "#4b4263",
+                      "outline": "#7a7582",
+                      "on-tertiary-container": "#503d00",
+                      "tertiary-fixed": "#ffdf93",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#f2ecf4",
+                      "on-secondary-container": "#645a7d",
+                      "on-primary-fixed-variant": "#4f378a",
+                      "tertiary-container": "#c9a74d",
+                      "surface-variant": "#e6e0e9",
+                      "surface-container-low": "#f8f2fa",
+                      "primary-container": "#6750a4",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#ece6ee",
+                      "surface-tint": "#6750a4",
+                      "secondary-fixed-dim": "#cdc0e9",
+                      "on-secondary": "#ffffff",
+                      "on-secondary-fixed": "#1f1635",
+                      "surface-dim": "#ded8e0",
+                      "on-tertiary-fixed-variant": "#594400",
+                      "surface": "#fdf7ff",
+                      "background": "#fdf7ff",
+                      "surface-container-highest": "#e6e0e9",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#241a00",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#e9ddff",
+                      "inverse-on-surface": "#f5eff7",
+                      "on-primary-fixed": "#22005d",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "stack-md": "16px",
+                      "stack-xs": "4px",
+                      "margin-desktop": "64px",
+                      "base": "8px",
+                      "stack-lg": "32px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Roboto Flex"],
+                      "label-sm": ["Fira Sans"],
+                      "code-sm": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Sidebar Navigation (Red-Themed SideNav Implementation) -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col bg-surface-container-high/60 backdrop-blur-[12px] border-r border-error/20 py-base gap-stack-xs z-50">
+<div class="px-6 py-8">
+<h1 class="font-headline-md text-headline-md font-bold text-error">Admin Panel</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Super Admin</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<!-- Active Link -->
+<a class="flex items-center gap-3 bg-error text-on-error rounded-xl font-bold px-4 py-3 active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<!-- Inactive Links -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 rounded-xl transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-label-sm text-label-sm">Properties</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 rounded-xl transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">Lease Requests</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 rounded-xl transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Tenants</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 rounded-xl transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 rounded-xl transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2 pb-6 space-y-1 border-t border-error/10 pt-4">
+<button class="w-full flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 rounded-xl transition-all">
+<span class="material-symbols-outlined">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</button>
+<button class="w-full flex items-center gap-3 text-error px-4 py-3 hover:bg-error/10 rounded-xl transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-sm text-label-sm">Sign Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 p-margin-desktop min-h-screen">
+<!-- Header Section -->
+<header class="flex justify-between items-center mb-stack-lg">
+<div>
+<h2 class="font-display-lg text-[32px] font-bold text-primary">System Overview</h2>
+<p class="text-on-surface-variant">Real-time platform performance and management.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="glass-card px-4 py-2 rounded-xl flex items-center gap-2 text-primary font-bold hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">add_circle</span>
+                    New Listing
+                </button>
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="Professional studio portrait of a senior executive male in his 40s, wearing a tailored charcoal suit and a sharp white shirt. The lighting is high-end corporate style with soft shadows, set against a clean, light-mode office background. The atmosphere conveys confidence, trust, and professional leadership in a modern real estate technology environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt1bYojq2-LnBo0VoiBZXt2O8rlhh2ooaCg-np0ZWQq5LN1_DNcBDTpwnQG-no2ysapLJcXM1gbAzz1pOFm6GkZ7PJDBDBoHknMXrMlUazpVqbsKESAeRm5wpR75QNE0yZRyMls9tgaoo1HztaK5_0uBCEJ9H_BZoD3bn9-5oNu6sCFt8mtMdXjklptA1JKKfooriBChhzs5D-8AIpOAMGz1ClZHi9jYRBXMpLYLmJGkqUNvXJ6QSalkgfyK8Jyd5fnYRLCjQL26s"/>
+</div>
+</div>
+</header>
+<!-- High-Impact Status Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Pending Approvals -->
+<div class="glass-card p-6 rounded-[2rem] border-l-4 border-primary transition-all hover:shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-primary/10 rounded-2xl">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+<span class="text-primary font-bold text-headline-md">08</span>
+</div>
+<h3 class="font-headline-md text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Pending Approvals</h3>
+<p class="text-sm text-outline">Awaiting manual verification</p>
+</div>
+<!-- Active Disputes -->
+<div class="glass-card p-6 rounded-[2rem] border-l-4 border-error transition-all hover:shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-error/10 rounded-2xl">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<span class="text-error font-bold text-headline-md">03</span>
+</div>
+<h3 class="font-headline-md text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">Active Disputes</h3>
+<p class="text-sm text-outline">Resolution required immediately</p>
+</div>
+<!-- New Registrations -->
+<div class="glass-card p-6 rounded-[2rem] border-l-4 border-tertiary transition-all hover:shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-tertiary/10 rounded-2xl">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">person_add</span>
+</div>
+<span class="text-tertiary font-bold text-headline-md">12</span>
+</div>
+<h3 class="font-headline-md text-label-sm uppercase tracking-wider text-on-surface-variant mb-1">New Registrations</h3>
+<p class="text-sm text-outline">Past 24 hours</p>
+</div>
+</div>
+<!-- Main Layout Split -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Priority Approvals (Property Cards Grid) -->
+<section class="lg:col-span-2 space-y-stack-md">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">Priority Approvals</h2>
+<a class="text-primary font-bold text-label-sm hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Property Card 1 -->
+<div class="glass-card rounded-[1.5rem] overflow-hidden group">
+<div class="h-40 w-full relative">
+<img alt="Modern Villa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A luxurious modern villa with clean architectural lines, expansive floor-to-ceiling glass windows, and a pristine white exterior. The property is set against a lush green manicured garden during the golden hour, with warm interior lights glowing. The aesthetic is sophisticated and high-end, perfectly aligned with a professional property rental platform's premium branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjhDOUI79RuWOM0e1P9vLelSfxvv-Rczp0Fhsl5W5uv-JiTEuTLpVtCMkgiVbv76YlGQFHSTHvzdmty5bpV4fBkh4Xw-0nKanLcuoJA1v2vKNliYlEvD_zEyZGgU3UP4uHix0TWoAB_YcLWbKeyUKbV22HGMNAvhODwbC3fYZ52qplOcWPtJRcYCEnDp6KyK122dEoIv5fcX0drnhmjjp5H3GLaVOI2Lv9LKF3Mxb2Jrx20mpcdW0EPO4Ydwr6ExblSXzX1Lfmsro"/>
+<span class="absolute top-3 left-3 bg-primary text-on-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase">Urgent</span>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-body-lg font-bold">Emerald Heights Suite</h4>
+<span class="text-primary font-bold">$4,500/mo</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Downtown District, Sector 4
+                            </p>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg text-sm font-bold hover:bg-primary-container transition-colors">Approve</button>
+<button class="px-3 border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="glass-card rounded-[1.5rem] overflow-hidden group">
+<div class="h-40 w-full relative">
+<img alt="Suburban House" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A charming contemporary suburban home featuring a mix of natural wood siding and dark grey stonework. The house has a welcoming front porch and is surrounded by early autumn foliage with soft sunlight filtering through the trees. The image style is bright and airy, emphasizing clarity and trust for potential renters and administrators." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyR4uHZKWKMpGjOfv3Se8nn_IOsdZbJBC575LFOaPl1QTtdfxgLhFHI0rF6U8qMuQcC71o7Y82ylSy2TPj9K-wjtRwGyZLGdl2zMTnDFNMKwoaj6XU1q_wUhM90bu-ThiA1OLSChzJx0BcNNTdiDQLBjzNghvnW6PyGQM7kk7ssQ0_P4d9gnkLDF0okU2_fgDZ7RqGsw8k1nDe7FubRxxLC_CcQcnBHnK-HkHdsKLdFs0Ljrax8_nJj9cmFDLTgrCOGQVlxVbJwCM"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-body-lg font-bold">Oakwood Family Villa</h4>
+<span class="text-primary font-bold">$3,200/mo</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                North Parklands
+                            </p>
+<div class="flex gap-2">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg text-sm font-bold hover:bg-primary-container transition-colors">Approve</button>
+<button class="px-3 border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- System Health Sidebar -->
+<aside class="space-y-stack-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">System Health</h2>
+<div class="glass-card p-6 rounded-[1.5rem] space-y-6">
+<!-- API Gateway -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">API Gateways</span>
+<span class="font-code-sm text-code-sm text-primary">99.9%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-1000" style="width: 99.9%;"></div>
+</div>
+</div>
+<!-- Database Latency -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Database Latency</span>
+<span class="font-code-sm text-code-sm text-primary">24ms</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary transition-all duration-1000" style="width: 15%;"></div>
+</div>
+<p class="text-[10px] text-outline text-right">Optimal performance range</p>
+</div>
+<!-- Storage Capacity -->
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Storage Capacity</span>
+<span class="font-code-sm text-code-sm text-error">82%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error transition-all duration-1000" style="width: 82%;"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-3 p-3 bg-secondary-container/30 rounded-xl">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-xs text-on-secondary-container">Weekly maintenance scheduled for Sunday at 02:00 UTC.</p>
+</div>
+</div>
+</div>
+<!-- Dark Glass Technical Log (Dev Admin Touch) -->
+<div class="bg-[#1d1b20]/90 backdrop-blur-md p-4 rounded-xl border border-white/10">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="font-code-sm text-code-sm text-white/70 uppercase">Live Console</span>
+</div>
+<div class="font-code-sm text-code-sm space-y-1 text-green-400">
+<p>&gt; Fetching latest audit logs...</p>
+<p>&gt; Tenant ID: T-8829 Auth Success</p>
+<p>&gt; Webhook delivered (Status: 200)</p>
+<p class="text-white/40">&gt; _</p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Contextual FAB (Only on Dashboard) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[60]">
+<span class="material-symbols-outlined">support_agent</span>
+</button>
+<script>
+        // Simple micro-interaction for numbers counting up
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.font-bold.text-headline-md');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText);
+                let count = 0;
+                const updateCount = () => {
+                    const increment = target / 50;
+                    if (count < target) {
+                        count += increment;
+                        counter.innerText = Math.ceil(count).toString().padStart(2, '0');
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target.toString().padStart(2, '0');
+                    }
+                };
+                updateCount();
+            });
+        });
+    </script>
+</body></html>

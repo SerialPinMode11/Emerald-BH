@@ -1,0 +1,503 @@
+/**
+ * Emerald Housing — Unified Authentication (login)
+ * Matches glassmorphism mockup: purple #513a8f, frosted white surfaces.
+ */
+
+html.emerald-auth-body {
+    background-color: #8b9cb5 !important;
+}
+
+html.emerald-auth-body,
+html.emerald-auth-body body,
+html.emerald-auth-body #app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: none;
+    min-height: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+}
+
+html.emerald-auth-body body {
+    background: transparent !important;
+}
+
+html.emerald-auth-body #app {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+.emerald-auth-page {
+    --auth-purple: #513a8f;
+    --auth-purple-dark: #453277;
+    --auth-purple-light: #ede8f5;
+    --auth-purple-muted: #7c6bad;
+    --auth-text: #2d2d35;
+    --auth-label: #5a5a66;
+    --auth-glass: rgba(255, 255, 255, 0.58);
+    --auth-glass-strong: rgba(255, 255, 255, 0.78);
+    --auth-glass-border: rgba(255, 255, 255, 0.72);
+    --auth-surface: rgba(255, 255, 255, 0.92);
+    color-scheme: light;
+    font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.emerald-auth-page * {
+    box-sizing: border-box;
+}
+
+.emerald-auth-bg {
+    flex: 1;
+    width: 100%;
+    min-height: 100dvh;
+    background-color: #8b9cb5;
+    background-image: url('https://images.unsplash.com/photo-1545324418-cc68a1d55c38?auto=format&fit=crop&w=2400&q=90');
+    background-size: cover;
+    background-position: center 30%;
+    background-attachment: fixed;
+}
+
+.emerald-auth-bg::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(81, 58, 143, 0.06) 40%,
+        rgba(45, 35, 75, 0.1) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.emerald-auth-main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1.25rem 1.5rem;
+}
+
+.emerald-auth-card {
+    width: 100%;
+    max-width: 28rem;
+    padding: 2.25rem 2rem 2rem;
+    border-radius: 2rem;
+    background: var(--auth-glass);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    border: 1px solid var(--auth-glass-border);
+    box-shadow:
+        0 32px 64px -16px rgba(45, 35, 75, 0.22),
+        0 0 0 1px rgba(255, 255, 255, 0.45) inset,
+        0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+@media (min-width: 480px) {
+    .emerald-auth-card {
+        max-width: 30rem;
+        padding: 2.5rem 2.25rem 2.25rem;
+    }
+}
+
+.emerald-auth-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--auth-purple);
+    margin: 0;
+}
+
+.emerald-auth-subtitle {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--auth-label);
+}
+
+.emerald-auth-toggle {
+    display: flex;
+    margin-top: 1.75rem;
+    padding: 0.35rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+}
+
+.emerald-auth-toggle__btn {
+    flex: 1;
+    border: none;
+    cursor: pointer;
+    border-radius: 9999px;
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.emerald-auth-toggle__btn--active {
+    background: var(--auth-purple);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(81, 58, 143, 0.35);
+}
+
+.emerald-auth-toggle__btn--idle {
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--auth-text);
+}
+
+.emerald-auth-toggle__btn--idle:hover {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.emerald-auth-roles-label {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--auth-label);
+}
+
+.emerald-auth-roles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+}
+
+.emerald-auth-role {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 4.25rem;
+    padding: 0.5rem 0.25rem;
+    border-radius: 0.875rem;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.emerald-auth-role:hover:not(.emerald-auth-role--active) {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.emerald-auth-role--active {
+    border: 1.5px solid var(--auth-purple);
+    background: var(--auth-purple-light);
+    box-shadow: 0 0 0 1px rgba(81, 58, 143, 0.12);
+}
+
+.emerald-auth-role__icon {
+    font-size: 1.625rem;
+    line-height: 1;
+    color: #6e6e7a;
+}
+
+.emerald-auth-role--active .emerald-auth-role__icon {
+    color: var(--auth-purple);
+}
+
+.emerald-auth-role__label {
+    font-size: 0.5625rem;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+    color: var(--auth-label);
+}
+
+@media (min-width: 400px) {
+    .emerald-auth-role__label {
+        font-size: 0.625rem;
+    }
+}
+
+.emerald-auth-role--active .emerald-auth-role__label {
+    color: var(--auth-purple);
+}
+
+.emerald-auth-field-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--auth-label);
+}
+
+.emerald-auth-input-wrap {
+    position: relative;
+}
+
+.emerald-auth-input-icon {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: #a8a8b3;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.emerald-auth-input {
+    width: 100%;
+    padding: 0.8rem 0.9rem 0.8rem 2.65rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--auth-text);
+    background: var(--auth-surface);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px rgba(45, 35, 75, 0.04);
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+}
+
+.emerald-auth-input--password {
+    padding-right: 2.75rem;
+    letter-spacing: 0.15em;
+}
+
+.emerald-auth-input::placeholder {
+    color: #b0b0b8;
+    letter-spacing: normal;
+}
+
+.emerald-auth-input:focus {
+    outline: none;
+    border-color: var(--auth-purple-muted);
+    box-shadow: 0 0 0 3px rgba(81, 58, 143, 0.15);
+}
+
+.emerald-auth-input-toggle {
+    position: absolute;
+    right: 0.65rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #a8a8b3;
+    line-height: 0;
+}
+
+.emerald-auth-input-toggle:hover {
+    color: var(--auth-purple);
+}
+
+.emerald-auth-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.emerald-auth-remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--auth-text);
+    cursor: pointer;
+}
+
+.emerald-auth-remember input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--auth-purple);
+    cursor: pointer;
+}
+
+.emerald-auth-forgot {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--auth-purple);
+    text-decoration: none;
+}
+
+.emerald-auth-forgot:hover {
+    text-decoration: underline;
+}
+
+.emerald-auth-submit {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: none;
+    border-radius: 0.875rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    font-family: inherit;
+    color: #fff;
+    background: var(--auth-purple);
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(81, 58, 143, 0.38);
+    transition:
+        background 0.2s,
+        transform 0.1s,
+        box-shadow 0.2s;
+}
+
+.emerald-auth-submit:hover:not(:disabled) {
+    background: var(--auth-purple-dark);
+    box-shadow: 0 8px 24px rgba(81, 58, 143, 0.45);
+}
+
+.emerald-auth-submit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.emerald-auth-divider {
+    position: relative;
+    margin: 0.25rem 0;
+    text-align: center;
+}
+
+.emerald-auth-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(81, 58, 143, 0.12);
+}
+
+.emerald-auth-divider span {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    color: var(--auth-label);
+    background: transparent;
+}
+
+.emerald-auth-social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.emerald-auth-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--auth-text);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.emerald-auth-social-btn:hover {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.emerald-auth-footer {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    padding: 0.85rem 1.5rem 1rem;
+    background: rgba(235, 235, 240, 0.88);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.emerald-auth-footer__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    align-items: center;
+    max-width: 72rem;
+    margin: 0 auto;
+    font-size: 0.6875rem;
+    color: #5c5c68;
+}
+
+@media (min-width: 768px) {
+    .emerald-auth-footer__inner {
+        grid-template-columns: 1fr auto 1fr;
+        gap: 1rem;
+        font-size: 0.75rem;
+    }
+
+    .emerald-auth-footer__copy {
+        justify-self: start;
+    }
+
+    .emerald-auth-footer__nav {
+        justify-self: center;
+    }
+
+    .emerald-auth-footer__badge {
+        justify-self: end;
+    }
+}
+
+.emerald-auth-footer__copy {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.emerald-auth-footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.25rem;
+}
+
+.emerald-auth-footer__nav a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.emerald-auth-footer__nav a:hover {
+    color: var(--auth-purple);
+    text-decoration: underline;
+}
+
+.emerald-auth-footer__badge {
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.4rem 0.85rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(200, 200, 210, 0.8);
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #6a6a75;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .emerald-auth-footer__badge {
+        font-size: 0.625rem;
+    }
+}

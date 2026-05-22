@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Community Mediator Portal - Emerald Housing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=Roboto+Flex:wght@400;500&amp;family=Fira+Sans:wght@500&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface-container-highest": "#e6e0e9",
+                        "secondary-fixed": "#e9ddff",
+                        "primary-fixed": "#e9ddff",
+                        "inverse-on-surface": "#f5eff7",
+                        "on-secondary-container": "#645a7d",
+                        "on-surface-variant": "#494551",
+                        "on-primary-container": "#e0d2ff",
+                        "tertiary": "#765b00",
+                        "surface-container-low": "#f8f2fa",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-primary-fixed": "#22005d",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#503d00",
+                        "surface": "#fdf7ff",
+                        "surface-container-high": "#ece6ee",
+                        "background": "#fdf7ff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1d1b20",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "outline-variant": "#cbc4d2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1f1635",
+                        "secondary": "#63597c",
+                        "secondary-container": "#e1d4fd",
+                        "surface-bright": "#fdf7ff",
+                        "tertiary-container": "#c9a74d",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "primary-container": "#6750a4",
+                        "primary-fixed-dim": "#cfbcff",
+                        "on-surface": "#1d1b20",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "surface-dim": "#ded8e0",
+                        "inverse-primary": "#cfbcff",
+                        "surface-tint": "#6750a4",
+                        "primary": "#4f378a",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdf93",
+                        "outline": "#7a7582",
+                        "surface-container": "#f2ecf4",
+                        "inverse-surface": "#322f35",
+                        "surface-variant": "#e6e0e9",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "stack-xs": "4px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "body-md": ["Roboto Flex"],
+                        "body-lg": ["Roboto Flex"],
+                        "display-lg-mobile": ["Inter"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Fira Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .glass-card-dark {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface/60 backdrop-blur-xl w-full sticky top-0 z-40 border-b border-white/30 shadow-sm">
+<div class="flex items-center justify-between px-margin-mobile py-base w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-white/30">
+<img alt="Mediator Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7bCDDyRMFhprpzIps5hoVi2-uT_QsJJSjH-78If_Rm1j-p3BiTGwoVrEkuaRu6WBcmoOjiaZ4cKHFH25YlYt-feYwB7kefjxTTW-IZkD_zaiqjq-3E83q-MFITlBUXiflXn3HR4CPDVbGJxPWnh4-2h3ys5qIUBMYl2BvERgHLpdkTOowLA1KWdyAdgFW1vjyiyRgloyjkyntFi0c6ySWGhHJK_80B0INIbbUECVJZ9perzAJajajrzj-QPT99yLCv6J-fUUi_Ns"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">Emerald Housing</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-white/20 transition-colors active:scale-95 duration-150 ease-in-out">notifications</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Welcome Header -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Community Mediator Portal</h2>
+<p class="text-on-surface-variant font-body-md">Resolving housing disputes with transparency and fairness.</p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Assigned Agreements & Dispute Queue -->
+<div class="lg:col-span-7 space-y-stack-lg">
+<!-- Dispute Investigation Queue (Bento Card) -->
+<div class="glass-card rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">priority_high</span>
+<h3 class="font-headline-md text-headline-md">Investigation Queue</h3>
+</div>
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-label-sm font-label-sm">4 Urgent</span>
+</div>
+<div class="space-y-4">
+<!-- Dispute Item 1 -->
+<div class="p-4 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-primary/20">
+<div class="flex justify-between mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Case #DM-9021</span>
+<span class="text-error font-bold text-label-sm">High Priority</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">Oakwood Manor: Maintenance Escrow</h4>
+<p class="text-body-md text-on-surface-variant mb-3">Tenant claims essential repairs delayed beyond 30-day grace period.</p>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img alt="Tenant" class="w-6 h-6 rounded-full border border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8WYJdp1j7WF2oYq6BOZWvNxyPkQsUpQJ3H5HtGMeAVHZMCZQNUCM6gCOzFeSK5aKkgZQ3BMxzHZxQusgGjuGWtOxJeXzf-SddYYVUQRrQAx6lalAM9kbU4F1rgC-9HGbc-fGnsedPRvsYAQ-ruK_XwJFrTOtLrngDTTp3RgsOhq6qKTm5eBoFd3DW6kJidl28AJ0pbJflsAfN9othbaJrfb2bEycoQyw90vMOs8dlh6xVxLIMbOwkJZiMQD9Y3s1J81TFh-39CQA"/>
+<img alt="Owner" class="w-6 h-6 rounded-full border border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM_HFArjRy4vXLwiOU5FOLyVo-gSQ9Ay8vAhr6-EbGISZ9FZUP7L2b6cMdICrTaIVT-W7RmPAyPbVit5TFKg-8bWWYOxXekcU2Kks9LhfIVJIJ7PAoRKLTrC-higppiqHhGggmf_ElQJRc3KULpd_7tKthSxZ6nG3LBEqh4oXzlzH7Rb4oYqyRJpbeohCIFwri7F-8mz1LmXBJxUydVNmhw_SARRKSr6W7NMo1Iqra5Ijl_IWd9PpVEQzI-egDyNsByo2ajHMutAI"/>
+</div>
+<span class="text-label-sm text-outline">Requested 2 days ago</span>
+</div>
+</div>
+<!-- Dispute Item 2 -->
+<div class="p-4 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors cursor-pointer border border-transparent hover:border-primary/20">
+<div class="flex justify-between mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline">Case #DM-8845</span>
+<span class="text-primary font-bold text-label-sm">In Review</span>
+</div>
+<h4 class="font-bold text-on-surface mb-1">Skyline Loft: Noise Complaint Appeal</h4>
+<p class="text-body-md text-on-surface-variant mb-3">Community board request for lease review due to recurring noise violations.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-label-sm" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="text-label-sm text-outline">Investigation ending in 4h</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Assigned Rental Agreements Grid -->
+<div>
+<h3 class="font-headline-md text-headline-md mb-4 px-2">Assigned Rental Agreements</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Agreement Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group active:scale-[0.98] transition-all">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A modern, sun-drenched minimalist apartment interior with floor-to-ceiling windows overlooking a lush city park. The space features clean lines, white walls, and elegant purple velvet accent chairs. Soft, natural morning light creates a peaceful and premium atmosphere consistent with a professional real estate portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKZr4X-Teb1uoEvGT0jE1OrgA-Z0_oCOaSV7l152nSdc-JdUTIXePlESPA3RM8pPOTYTgWRmveClucSy5llUf_L7oUntn0pbuCwSwPoyezsvPdDLq7DaTfLRZlOfE-utwq4Lx319wkXCJ5y5e8rlG64P0Qr4ol2t6457vDX-L4ILSTXRMcXpjEZ-ESzk1jLdo2PeN-5B9woMpWjXKgM_kiw8oRdRrhA6BhsAa8AoDxRYkqIZCmn0DFyhOrtBHPtzl9NcJgzp-L0yk"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">requested</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-on-surface">Unit 402 - Pine Crest</h4>
+<p class="text-label-sm text-on-surface-variant mb-4">$2,400/mo • 12 Months</p>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-sm hover:opacity-90 transition-opacity">Review Clauses</button>
+</div>
+</div>
+<!-- Agreement Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group active:scale-[0.98] transition-all">
+<div class="h-40 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="An ultra-modern kitchen with sleek dark cabinets, marble countertops, and warm ambient under-cabinet lighting. The design is sophisticated and high-end, utilizing professional architectural photography standards. The palette emphasizes deep plums and warm greys, reflecting a modern trust-focused brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbEZugV3iupyCbMUv79iVidrGjFFR717OIVO8E_T1ZIp_oRlG8PglOY2L7sNY0CUNKLGWXmQpdIaT90EZwAUcoUGZivxKgvyQwjHzoY4G2HtrO1x9s_cRLfocEhStRb7dduoi-qmdWwSFCTVWL0G1XLP4YKY1hkFR5E3I9TI7EOxUB_5hiifNZBVYyBVfSlNxa4AUxv-csJOqDE1SaDV7hLgdnIwpxqoSp_LvmmY5aChO05jLeGQwQD_WlcSwZUdKHA171XYvuBs8"/>
+<div class="absolute top-3 left-3 bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-sm text-label-sm">community_review</div>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-on-surface">Townhouse B - Green Gardens</h4>
+<p class="text-label-sm text-on-surface-variant mb-4">$3,150/mo • 24 Months</p>
+<button class="w-full py-2 border border-primary text-primary rounded-lg font-label-sm hover:bg-primary/5 transition-colors">Continue Review</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Detail View & Fairness Validation -->
+<div class="lg:col-span-5">
+<div class="sticky top-24 space-y-gutter">
+<!-- Detail View (Active Case) -->
+<div class="glass-card rounded-xl p-6 border-2 border-primary/20">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">gavel</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">Agreement Validation</h3>
+<p class="text-label-sm text-outline">ID: AGR-11029-EM</p>
+</div>
+</div>
+<!-- Validation Checklist -->
+<div class="space-y-4 mb-8">
+<h4 class="text-label-sm font-label-sm uppercase text-outline-variant">Fairness Checkpoints</h4>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-bold text-body-md text-on-surface">Base Rent Fairness</p>
+<p class="text-body-md text-on-surface-variant">Matches market averages within 5% margin.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-bold text-body-md text-on-surface">Security Deposit Limit</p>
+<p class="text-body-md text-on-surface-variant">Compliant with local 1-month maximum law.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error">info</span>
+<div class="flex-1">
+<p class="font-bold text-body-md text-on-surface">Maintenance Liability</p>
+<p class="text-body-md text-on-surface-variant">Section 4.2 contains ambiguous language regarding appliance repairs. <span class="text-primary font-bold cursor-pointer hover:underline">Flag for Revision</span></p>
+</div>
+</div>
+</div>
+<!-- Internal Notes -->
+<div class="mb-8">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Internal Mediator Notes</label>
+<textarea class="w-full bg-white/40 border border-outline-variant rounded-xl p-4 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none min-h-[120px]" placeholder="Add your investigation findings here..."></textarea>
+</div>
+<!-- Action Bar -->
+<div class="flex flex-col gap-3">
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-bold shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">Submit Final Review</button>
+<div class="flex gap-3">
+<button class="flex-1 py-3 border border-outline text-on-surface-variant rounded-xl font-label-sm hover:bg-black/5 transition-colors">Request Info</button>
+<button class="flex-1 py-3 border border-error text-error rounded-xl font-label-sm hover:bg-error/5 transition-colors">Escalate Case</button>
+</div>
+</div>
+</div>
+<!-- Market Data Widget -->
+<div class="glass-card-dark rounded-xl p-6">
+<h4 class="font-bold text-on-surface mb-4">Area Insight: Pine Crest</h4>
+<div class="flex items-end gap-2 mb-2">
+<span class="text-3xl font-black text-primary">$2,350</span>
+<span class="text-label-sm text-outline-variant mb-1">Avg. Market Rent</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-primary w-2/3 h-full"></div>
+<div class="bg-tertiary w-1/4 h-full"></div>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-3 italic">"Current agreement is 2.1% above local benchmarks."</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/30 flex justify-around items-center h-16 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center bg-primary-container/80 text-on-primary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">home_work</span>
+<span class="font-label-sm text-label-sm">My Rentals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant relative">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+<div class="absolute top-0 right-3 w-2 h-2 bg-error rounded-full"></div>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">group_work</span>
+<span class="font-label-sm text-label-sm">Switch Role</span>
+</button>
+</nav>
+<!-- Contextual FAB (Only on Home/Dashboard) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = card.getBoundingClientRect();
+                const x = (e.clientX - left) / width;
+                const y = (e.clientY - top) / height;
+                
+                card.style.setProperty('--mouse-x', x);
+                card.style.setProperty('--mouse-y', y);
+            });
+        });
+    </script>
+</body></html>

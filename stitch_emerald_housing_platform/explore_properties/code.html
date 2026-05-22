@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=Roboto+Flex:wght@400;500&amp;family=Fira+Sans:wght@500&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(30, 27, 32, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fdf7ff;
+            background-image: radial-gradient(at 0% 0%, rgba(103, 80, 164, 0.05) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(103, 80, 164, 0.05) 0px, transparent 50%);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#594400",
+                    "surface-container-highest": "#e6e0e9",
+                    "secondary-fixed": "#e9ddff",
+                    "primary-fixed": "#e9ddff",
+                    "inverse-on-surface": "#f5eff7",
+                    "on-secondary-container": "#645a7d",
+                    "on-surface-variant": "#494551",
+                    "on-primary-container": "#e0d2ff",
+                    "tertiary": "#765b00",
+                    "surface-container-low": "#f8f2fa",
+                    "on-secondary-fixed-variant": "#4b4263",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-primary-fixed": "#22005d",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#503d00",
+                    "surface": "#fdf7ff",
+                    "surface-container-high": "#ece6ee",
+                    "background": "#fdf7ff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1d1b20",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#e7c365",
+                    "outline-variant": "#cbc4d2",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#1f1635",
+                    "secondary": "#63597c",
+                    "secondary-container": "#e1d4fd",
+                    "surface-bright": "#fdf7ff",
+                    "tertiary-container": "#c9a74d",
+                    "on-primary-fixed-variant": "#4f378a",
+                    "primary-container": "#6750a4",
+                    "primary-fixed-dim": "#cfbcff",
+                    "on-surface": "#1d1b20",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#cdc0e9",
+                    "surface-dim": "#ded8e0",
+                    "inverse-primary": "#cfbcff",
+                    "surface-tint": "#6750a4",
+                    "primary": "#4f378a",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdf93",
+                    "outline": "#7a7582",
+                    "surface-container": "#f2ecf4",
+                    "inverse-surface": "#322f35",
+                    "surface-variant": "#e6e0e9",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "stack-xs": "4px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-md": ["Roboto Flex"],
+                    "body-lg": ["Roboto Flex"],
+                    "display-lg-mobile": ["Inter"],
+                    "code-sm": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Fira Sans"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl border-b border-white/30 dark:border-white/10 shadow-sm w-full sticky top-0 z-40">
+<div class="flex items-center justify-between px-margin-mobile py-base w-full max-w-[1280px] mx-auto">
+<div class="flex items-center gap-3">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary dark:text-primary-fixed-dim">Emerald Housing</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-6">
+<a class="text-primary dark:text-primary-fixed-dim font-bold font-label-sm text-label-sm" href="#">Explore</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:bg-white/20 transition-colors px-2 py-1 rounded" href="#">My Rentals</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:bg-white/20 transition-colors px-2 py-1 rounded" href="#">Messages</a>
+</div>
+<button class="p-2 rounded-full hover:bg-white/20 transition-colors active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly user for a real estate platform. The person is smiling warmly against a soft, out-of-focus modern apartment interior. The lighting is high-key and bright, consistent with a clean light-mode UI. The overall aesthetic is professional, trustworthy, and contemporary, using a shallow depth of field to emphasize the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbYahX2c3UF-8MMMvajRUHm-nG8WggtM1dtoIBG_ttDBAx9wxZ8o6zZg_0p_0LKfeziTTlyeV4NeL55Xb2F9FicmlcWalcNemMxMFv0csRfbTgeRdRuoDtK4xa0dGbj7lMJeIV_x8h63V3EZIn28cPG3Ir9-1rogBNnc9wGVSneRwOF50aYYJ4efnGMhF9Lcah4BEOZ878AT039HNNzWqm1QEMARdp_O66GMKOWRWVF36mZEj_PMmGf4PI6VFsjhtaFjY9GuOqJ4U"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-margin-mobile mt-stack-lg">
+<!-- Search and Filter Section -->
+<section class="mb-stack-lg">
+<div class="glass-card p-stack-md rounded-xl shadow-sm">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-body-md font-body-md" placeholder="Search by property name, neighborhood..." type="text"/>
+</div>
+<div class="flex gap-2">
+<div class="relative min-w-[140px]">
+<select class="w-full appearance-none pl-4 pr-10 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary transition-all outline-none text-label-sm font-label-sm">
+<option>All Cities</option>
+<option>San Francisco</option>
+<option>New York</option>
+<option>Seattle</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<div class="relative min-w-[140px]">
+<select class="w-full appearance-none pl-4 pr-10 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary transition-all outline-none text-label-sm font-label-sm">
+<option>Price Range</option>
+<option>$1000 - $2000</option>
+<option>$2000 - $4000</option>
+<option>$4000+</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-sm text-label-sm hover:opacity-90 active:scale-95 transition-all">
+                            Filter
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Properties Bento-ish Grid -->
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Featured Collections</h2>
+<button class="text-primary font-label-sm text-label-sm flex items-center gap-1 hover:underline">
+                View all <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Hero Property Card -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl shadow-lg h-[400px]">
+<img alt="Modern Penthouse" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A wide-angle shot of a luxurious modern penthouse with floor-to-ceiling windows overlooking a twilight city skyline. The interior features minimalist furniture, warm ambient lighting, and high-end finishes. The overall mood is sophisticated and exclusive, emphasizing premium urban living with a crisp, high-definition aesthetic consistent with a luxury real estate brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW_XGaoKy_WHY08MWcIkUOU6kDDRWPBXOp5CfL69uXP_5xYWy3MJeGD3Cm9MH61t7KtwTxeKpxGNCO7fYdGIsBPCzGZLJl-6XAMJsKeZ1OLC41A2OO532GTrZffHmGLgiTu3BonifnELfkfIUpDPhKzojRZhp7pZU8Q8gaHPn881sPW4hpag9orvr4-YncWstJ4srLtTyTeoO10f4rd7TdxChYzzaE7fsKd9sn7D4KSMvcxLDfHYksuSCuoym3JnK5sB3HXUQ7Bi4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm">New Listing</span>
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-label-sm">Featured</span>
+</div>
+<div class="absolute bottom-0 left-0 p-stack-lg w-full">
+<div class="glass-card p-stack-md rounded-xl max-w-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Azure Skyline Penthouse</h3>
+<p class="text-on-surface-variant font-body-md mb-4">San Francisco • $5,400/month</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<span class="flex items-center gap-1 text-label-sm"><span class="material-symbols-outlined text-primary">bed</span> 3 Bed</span>
+<span class="flex items-center gap-1 text-label-sm"><span class="material-symbols-outlined text-primary">bathtub</span> 2 Bath</span>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg text-label-sm font-label-sm hover:brightness-110 transition-all active:scale-95">Request to Rent</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Cards -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Mini Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden shadow-sm flex flex-col h-full group">
+<div class="h-32 overflow-hidden">
+<img alt="Suburban Villa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A beautiful modern suburban house with a manicured green lawn and bright blue sky. The architecture is clean with large windows and a welcoming entrance. The lighting is bright afternoon sun, creating a cheerful and inviting atmosphere for a family home listing in a high-end real estate application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl_renApMJugN9liMdLgFkZXzOlRxZh2Xa0Dk0EWMURHU-eyIdypIKEytAW06rD2o5cMqRRz10DrvEmJCN3Etxzdcdem3LNjYvEBMGl0UZQyOryrZgAo56bbHHKtTmj258iXGc-M4tluBOKCmeMHGydipIUF_qhzb6MgHUmSUFUJt-3tV9W5qF-BpsyPgekUCfCXv5V74dIORTObJUGfdBe_VLlOFDZVTxqNdF3ueHL2smH41rYINZTyrUMlgy02JX4bT-5ZNAWKY"/>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-headline-md !text-[18px]">Oakwood Estates</h4>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-error transition-colors">favorite</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-4">Seattle • $2,800/mo</p>
+</div>
+<button class="w-full border border-primary text-primary py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/5 transition-all">Request to Rent</button>
+</div>
+</div>
+<!-- Mini Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden shadow-sm flex flex-col h-full group">
+<div class="h-32 overflow-hidden">
+<img alt="Urban Loft" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A chic industrial-style urban loft with exposed brick walls, high ceilings, and large factory-style windows. The space is filled with natural light and features contemporary furniture. The mood is trendy and artistic, appealing to young professionals seeking an aesthetic city living experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG3mnw12-YJs5nInBiptepsOSysFSPtH8bExMK-Pad0-7bp7VFhDg8VcJUwFdu-JwlPGIBVHwSAgWYzrUWcxCoX7abcs38dsh-rO0eiOsUr_1iT2CbxATg6ujvzZBDAC7gLuqX8U4BpiPJLwHackIU5xzrkdpOSu8A5dOBL7qPMRI0DaD1BA7njKQu0al3SnDWsjQAtWqo6wMHaiL60ADmRXOHQkW68HfyOhPJZyYZi90TMSBh8d8OE55pPo3wxmEut8X73arccj8"/>
+</div>
+<div class="p-4 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-headline-md !text-[18px]">Brooklyn Brick Loft</h4>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-error transition-colors">favorite</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-4">New York • $3,200/mo</p>
+</div>
+<button class="w-full border border-primary text-primary py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/5 transition-all">Request to Rent</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Feed -->
+<section class="mt-stack-lg pb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Recently Added Near You</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Loop-like property cards -->
+<div class="glass-card rounded-xl overflow-hidden shadow-sm group">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Property" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Exterior view of a contemporary architectural home with clean lines, wood accents, and integrated greenery. Shot during the golden hour with soft, warm sunlight hitting the facade. The visual style is premium and tranquil, evoking a sense of modern comfort and architectural excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcc-HTuIhCSf6FdMN7iRxbyiOGsGUNUOqCBojQlar0TF6szFXjHizaGYwmTzEWhOfFWifYrR-6Fw90gLPdf9p8MbYM2MUuZ65e56ISI565pAYV8JP43vEmPxRLbLjUEDe-_Fg1FGDIFYTy_uvqJ9MGRrKVtI-xnKbYzCO8iwHaCBvaedSoDQIDBLwgtI3TAorq5YsgpiIkag5ft6GfddzkFJadOoWsWSXke3mogbgSGY5ZE-lKDMU-NvVrtvRQg3GN8PKYBar3Llo"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-primary">Available</div>
+</div>
+<div class="p-4">
+<h5 class="font-headline-md text-headline-md !text-[16px] mb-1 truncate">Modern Forest Haven</h5>
+<p class="text-on-surface-variant text-label-sm mb-3">Portland • $2,100/mo</p>
+<button class="w-full bg-primary/10 text-primary py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/20 transition-all">Request to Rent</button>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden shadow-sm group">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Property" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Interior of a bright, sun-drenched minimalist apartment studio. White walls, light wood flooring, and elegant Scandinavian furniture create a serene and spacious feel. The lighting is pure and natural, showcasing a perfect clean-slate home for a modern tenant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Iw-PNOmtYPtKXzaWpK7bcPwkVOmZuZNf0smtN8vBTj9XDs1FAJAX0yhjdWTXRRso1i3O0KBQqDDqd-zDrOnk3SZfKQE_9TZ09_0sNOmgDJEJWGe0p0hnoJ5qhK-f_PQeNPjgKVi7Xe3y23hBAhZVU3w0a9L4CF4WxtKthZCmF7-cUJF-xmpPwq0lNmX7suoQbasTPa-krcXucFP89TXOvpS3G9y74SI8z6TRWZwAbET4YMQ9yzFEk_UVOBVXjJPp3gOqKt7qfd0"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-primary">Just Listed</div>
+</div>
+<div class="p-4">
+<h5 class="font-headline-md text-headline-md !text-[16px] mb-1 truncate">The Pearl Studio</h5>
+<p class="text-on-surface-variant text-label-sm mb-3">Austin • $1,850/mo</p>
+<button class="w-full bg-primary/10 text-primary py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/20 transition-all">Request to Rent</button>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden shadow-sm group">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Property" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A cozy, upscale kitchen in a modern apartment featuring marble countertops, stainless steel appliances, and elegant pendant lighting. The space is immaculately clean and styled with fresh herbs. The lighting is bright and crisp, highlighting the high-quality textures and materials of a premium rental property." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWia7ZwX1UN_XMRPPN5N_U4fndPcnx-9US9vC280-cK6qSNHN1BqeBlDsE61LQZ9jdgUfyWfvMSyhIEfM8Du0hbxxau1ZPlmbaWciGR98CEILQPYxKwulsbqTlIrDZNiyPFFV_k6AIaeKkJ5qvduTHoF2_ypM9yEMxGb6GMp0RHTv4yveni6CWR2UbHS7dgl3cWDBgO1dGDYFl0EqFVFAPz3aUpHwRcsW5JWODO65IThYP2SVqEWGQf_1DcNH9NDRbBJb83LLXBAI"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-secondary">Verified</div>
+</div>
+<div class="p-4">
+<h5 class="font-headline-md text-headline-md !text-[16px] mb-1 truncate">Gourmet Garden Flat</h5>
+<p class="text-on-surface-variant text-label-sm mb-3">Chicago • $2,400/mo</p>
+<button class="w-full bg-primary/10 text-primary py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/20 transition-all">Request to Rent</button>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden shadow-sm group">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Property" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A spacious and light-filled master bedroom with large windows showing a lush green garden outside. The room is decorated in neutral tones with soft textiles, suggesting a peaceful and restful environment. The high-key lighting creates a sense of airiness and luxury suitable for a top-tier rental platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKwntaKysff5Tk2Sfp5KUFMT8zLLEwtsRZOS2FRL-fruqVjgeatbtQkh3CLZu9ImN3uQC6tjS0ed7RhmKzABbzfStIYXjpM7JK2Fv42IkWqL_iXChIXwY6SuEE1SP_PZG9sRcVMbWFGNp46gCBJqrWVoNwcWFdDGqB-SNfAFtasjFSMCzDO9YGXPgg7yjmzxnB3-Tii4YrXhJ4LeGsMkw10_GgScNmhWObpdhuiX8EBSeQ-oyeza8S4OSMQtGXqujW5WZ1qUF2NTM"/>
+<div class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider text-primary">Premium</div>
+</div>
+<div class="p-4">
+<h5 class="font-headline-md text-headline-md !text-[16px] mb-1 truncate">Cedar Wood Suite</h5>
+<p class="text-on-surface-variant text-label-sm mb-3">Vancouver • $2,950/mo</p>
+<button class="w-full bg-primary/10 text-primary py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/20 transition-all">Request to Rent</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 dark:bg-surface-dim/60 backdrop-blur-xl border-t border-white/30 dark:border-white/10 shadow-lg">
+<div class="flex justify-around items-center h-16 px-4 pb-safe">
+<a class="flex flex-col items-center justify-center bg-primary-container/80 dark:bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-200 transition-all" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-primary-container/40 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home_work</span>
+<span class="font-label-sm text-label-sm">My Rentals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-primary-container/40 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-primary-container/40 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">group_work</span>
+<span class="font-label-sm text-label-sm">Switch Role</span>
+</a>
+</div>
+</nav>
+<!-- Floating Action Button - Contextual for Discovery -->
+<button class="fixed right-6 bottom-20 md:bottom-8 z-50 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">maps_ugc</span>
+</button>
+<script>
+        // Simple micro-interaction for interest
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+
+        // Search highlight effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

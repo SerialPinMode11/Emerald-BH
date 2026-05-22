@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Roboto+Flex:wght@400;500&amp;family=Fira+Sans:wght@500&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#ded8e0",
+            "secondary": "#63597c",
+            "on-tertiary-fixed": "#241a00",
+            "primary-container": "#6750a4",
+            "on-primary-container": "#e0d2ff",
+            "surface-tint": "#6750a4",
+            "on-error-container": "#93000a",
+            "background": "#fdf7ff",
+            "secondary-container": "#e1d4fd",
+            "primary": "#4f378a",
+            "tertiary-container": "#c9a74d",
+            "surface-container-low": "#f8f2fa",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#22005d",
+            "tertiary-fixed-dim": "#e7c365",
+            "on-tertiary-fixed-variant": "#594400",
+            "on-surface": "#1d1b20",
+            "surface-bright": "#fdf7ff",
+            "secondary-fixed": "#e9ddff",
+            "primary-fixed": "#e9ddff",
+            "on-secondary-container": "#645a7d",
+            "on-primary-fixed-variant": "#4f378a",
+            "error": "#ba1a1a",
+            "surface": "#fdf7ff",
+            "on-secondary-fixed": "#1f1635",
+            "surface-variant": "#e6e0e9",
+            "tertiary-fixed": "#ffdf93",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#322f35",
+            "secondary-fixed-dim": "#cdc0e9",
+            "surface-container-highest": "#e6e0e9",
+            "outline": "#7a7582",
+            "surface-container": "#f2ecf4",
+            "on-background": "#1d1b20",
+            "inverse-primary": "#cfbcff",
+            "outline-variant": "#cbc4d2",
+            "on-tertiary-container": "#503d00",
+            "on-primary": "#ffffff",
+            "on-surface-variant": "#494551",
+            "primary-fixed-dim": "#cfbcff",
+            "inverse-on-surface": "#f5eff7",
+            "on-secondary-fixed-variant": "#4b4263",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "tertiary": "#765b00",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#ece6ee"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-xs": "4px",
+            "margin-mobile": "16px",
+            "stack-md": "16px",
+            "gutter": "24px",
+            "base": "8px",
+            "stack-lg": "32px",
+            "margin-desktop": "64px"
+          },
+          "fontFamily": {
+            "body-md": ["Roboto Flex"],
+            "display-lg-mobile": ["Inter"],
+            "label-sm": ["Fira Sans"],
+            "code-sm": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-lg": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+            "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+            "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-panel {
+      backdrop-filter: blur(12px);
+      background: rgba(253, 247, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .dark .glass-panel {
+      background: rgba(46, 43, 50, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(79, 55, 138, 0.2);
+      border-radius: 10px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0">
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/30 shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-md">home_work</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Emerald Housing</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6">
+<button class="font-label-sm text-label-sm text-primary font-bold">Dashboard</button>
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">Cases</button>
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">Reports</button>
+</div>
+<img alt="Mediator Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20 object-cover" data-alt="A professional close-up portrait of a diverse community mediator in a bright, modern office setting. The lighting is soft and natural, emphasizing a trustworthy and professional atmosphere. The background is a slightly blurred architectural interior with clean lines and soft purple accents, matching the brand's sophisticated glassmorphism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClhjqovFooRIZMXR92hGl3ydyRXTYMCS0aYA0LZyXNb5CvqNqPQAdj79gUK7pOybkTq7ZyuckwLtKV05fT59jcPSvK78aKTShyZXTB7kDPGDxGrrD7Cb92Ij4vkzgLPcGGG7xdtRO4L7tSlo5fRu8krLS6lRLLPDZ2wfH9bRD7xNj03zOH6fxioa8558WBltz_PD5xOpUR6R_DhE_FgYOX-oaimPa2nP1YfQeWIonTAcy3UwuHvgGf72cqLfOSe0kk1To0wX1q9Js"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto pb-12">
+<div class="flex flex-col gap-base mb-stack-lg">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">gavel</span>
+<span class="text-label-sm font-label-sm">Dispute Resolution Console</span>
+</div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Case #D-8829-EH</h2>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm">Status: Investigation</span>
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-label-sm font-label-sm">Priority: High</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-stack-md shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">group</span>
+            Dispute Parties
+          </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white/40 p-4 rounded-lg border border-white/20">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Tenant (Complainant)</p>
+<div class="flex items-center gap-3">
+<img alt="Tenant" class="w-10 h-10 rounded-full" data-alt="A friendly, high-resolution headshot of a young professional man in casual attire. The image has a clean, minimalist background with soft lighting that suggests a modern urban apartment environment. The colors are muted and professional, fitting into a clean light-mode UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwI_8vu8b_spC3VEIYCRnXUdwWjjiv6-sZgxXXqCzqAS8LRBFAMluP-fRKcUxVzPLfp0ORyksmTBvnIqGKEyipaxtoy_QiBDw3wDNCrl-GEHvAQIkOZ7sLBCD9EdgrT-cvmDBi3-Pf_NioMjS4ztDRo6Hc51aTKxYorXRtKK59CnGu7yqdtjNnfAC5ea7J05mtF_ylblptMq6aQ4tC_UnssMR-dBzWKVkKJvpjzO7u_9Va4XbvSjrTqy7reFD9KPdXDGjqu-k51-w"/>
+<div>
+<p class="font-bold text-on-surface">Jordan Davies</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Joined 2022 • 4.8★</p>
+</div>
+</div>
+</div>
+<div class="bg-white/40 p-4 rounded-lg border border-white/20">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-2">Owner (Respondent)</p>
+<div class="flex items-center gap-3">
+<img alt="Owner" class="w-10 h-10 rounded-full" data-alt="A professional headshot of a middle-aged woman with an approachable smile. She is in a bright, modern architectural office. The visual style is crisp and clean with high-key lighting, maintaining the premium and trustworthy feel of the real estate platform's design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVDAEOHzRXmGJOs5bjLhb9iHsWUL1TFHhiLfs_Qgo8_n46tx1ExUmGUV3VG_FERl2VBIhf1tj-mVUX8S0AMHOI7x1JcqcIFu81kQ3ZcPD54vJbWDp1HOIzvDTNMm6bAaLNGIIC1d3-ggzN0tGEJZfzodSOIVnja42aQx1-iJRdd05Ovo3Vp_Mt44du3TMLCi-lf--mtPTp3xXy-KEsJ_Dr7Xz01k84qr1PTjQkTgTmCNIPP0j9dDg3rcfZIO4GffGGTxyuVT2SSV0"/>
+<div>
+<p class="font-bold text-on-surface">Martha Stewart-Property LLC</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Host since 2019 • 4.5★</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-stack-md shadow-sm">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">receipt_long</span>
+              Transaction Details
+            </h3>
+<button class="text-primary font-label-sm text-label-sm flex items-center gap-1 hover:underline">
+              View Ledger <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="flex items-center justify-between bg-primary/5 p-4 rounded-lg border border-primary/10">
+<div class="flex items-center gap-4">
+<div class="bg-primary text-white p-3 rounded-full">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Escrow ID: #ESC-9920</p>
+<p class="font-bold text-on-surface">Security Deposit + First Month</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-primary">$4,250.00</p>
+<p class="text-label-sm font-label-sm text-secondary">Held in Trust</p>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-stack-md shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">attachment</span>
+            Evidence &amp; Notes
+          </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="group relative aspect-square rounded-lg overflow-hidden border border-white/40 cursor-zoom-in">
+<img alt="Evidence 1" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="A detailed, sharp photograph of a plumbing leak in a modern kitchen. Water is pooling under a polished marble-finish sink area. The lighting is clear and realistic, showing the extent of damage for professional documentation. The image style is clean and forensic, suitable for a property dispute file." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrA30DJeGizzaxV8ln-xHVaJ18R1W38npgBjKFXIiGqli0JtwF53J1mbhbIcEaca1Ybnaw6sJO-khT3mdeW7vBa7C1RuG4af8qOGiWfl54tsRTgujl6lDqDlvAE5R45zwCWS7iIundAAXaaCEjW-LfAI7LnH6Lhey-nS-gq33LB4diLmnWZ9Ig3FJGue4KPcI2Bk_01XfraQFH4E303mMZyXDH8jXRrNVBuX75QoPQVKCa8TU-w1HEVWBBiCrcXx5QFcrwqidwFHg"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="group relative aspect-square rounded-lg overflow-hidden border border-white/40 cursor-zoom-in">
+<img alt="Evidence 2" class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="A close-up photograph of a damaged hardwood floor with deep scratches and water staining. The image is brightly lit to show texture and detail clearly. It is framed as a piece of forensic evidence for a housing mediation case, maintaining a neutral and professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZQJAo6FY44w4B6XstwA4jkVI4CmWchicn-pEUbPfAniQxMhvoeFR4tD7LAbU2l9lJCbcX1IMPFOxx0-7IAzNnpI5NSUckPx0YHgFcTfnqrgpBJEzceWkMWwtv73d0eDtmuxYcZj3lt_bSRN8FhPXGGqqL42jucGLIGB41nUr8z7aYx2k-tGF69xbZlrLtUvJ9nIQal6iQnBnVVWIBUhKUWrUhko4qoOpi6cQ_tNItt9j0sjbfgiYlHtHgjMCe4FWbm8Wq1Saf0WY"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center border-2 border-dashed border-outline-variant rounded-lg hover:border-primary transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary mb-2">add_circle</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Add File</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border border-outline-variant/30 mt-2">
+<p class="font-bold text-on-surface mb-1">Mediator Summary</p>
+<p class="text-body-md text-on-surface-variant">The tenant claims the unit was uninhabitable upon move-in due to a major leak in the kitchen. Owner asserts the leak was caused by improper use of the garbage disposal. On-site inspection pending for Tuesday.</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-stack-md shadow-lg border-primary/20 sticky top-24">
+<h3 class="font-headline-md text-headline-md text-primary">Resolution Actions</h3>
+<div class="flex flex-col gap-3">
+<button class="w-full py-3 px-4 bg-primary text-white rounded-lg font-bold shadow-md hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">assignment_return</span>
+              Full Refund to Tenant
+            </button>
+<button class="w-full py-3 px-4 border border-primary text-primary rounded-lg font-bold hover:bg-primary/5 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">check_circle</span>
+              Release to Owner
+            </button>
+<button class="w-full py-3 px-4 border border-error text-error rounded-lg font-bold hover:bg-error/5 active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">priority_high</span>
+              Escalate to Legal
+            </button>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/30">
+<p class="text-label-sm font-label-sm text-on-surface-variant mb-2">Internal Chat Log</p>
+<div class="flex flex-col gap-3 h-64 overflow-y-auto custom-scrollbar pr-2">
+<div class="bg-white/50 p-3 rounded-lg text-sm border border-white/20">
+<p class="font-bold text-primary mb-1">System <span class="font-normal text-on-surface-variant text-xs">10:24 AM</span></p>
+<p class="text-on-surface-variant">Jordan Davies uploaded 2 evidence files.</p>
+</div>
+<div class="bg-white/50 p-3 rounded-lg text-sm border border-white/20">
+<p class="font-bold text-secondary mb-1">Investigator Lee <span class="font-normal text-on-surface-variant text-xs">11:15 AM</span></p>
+<p class="text-on-surface-variant">Reviewing photos. The damage looks consistent with long-term pipe erosion, not tenant misuse.</p>
+</div>
+<div class="bg-primary/10 p-3 rounded-lg text-sm border border-primary/10 self-end w-4/5">
+<p class="font-bold text-primary mb-1 text-right">You <span class="font-normal text-on-surface-variant text-xs">11:30 AM</span></p>
+<p class="text-on-surface-variant text-right">Noted. I'll ask for the maintenance history from Martha.</p>
+</div>
+</div>
+<div class="mt-4 relative">
+<input class="w-full bg-white/40 border border-outline-variant rounded-lg py-2 px-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all pr-10" placeholder="Internal note..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-t border-white/30 shadow-lg rounded-t-xl h-20 px-4 pb-safe flex justify-around items-center">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm">Case</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label-sm text-label-sm">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">swap_horiz</span>
+<span class="font-label-sm text-label-sm">Switch</span>
+</div>
+</nav>
+<script>
+    // Add subtle interactive highlight to glass panels on mouse movement
+    document.querySelectorAll('.glass-panel').forEach(panel => {
+      panel.addEventListener('mousemove', (e) => {
+        const rect = panel.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        panel.style.setProperty('--mouse-x', `${x}px`);
+        panel.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  </script>
+</body></html>

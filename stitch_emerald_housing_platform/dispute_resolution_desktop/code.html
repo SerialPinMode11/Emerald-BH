@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Roboto+Flex:wght@400;500&amp;family=Fira+Sans:wght@400;500&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(253, 247, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 26, 35, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbc4d2;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#765b00",
+                        "secondary": "#63597c",
+                        "on-background": "#1d1b20",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#e9ddff",
+                        "on-surface-variant": "#494551",
+                        "inverse-surface": "#322f35",
+                        "primary-fixed-dim": "#cfbcff",
+                        "inverse-primary": "#cfbcff",
+                        "primary": "#4f378a",
+                        "outline-variant": "#cbc4d2",
+                        "surface-bright": "#fdf7ff",
+                        "secondary-container": "#e1d4fd",
+                        "on-primary-container": "#e0d2ff",
+                        "on-surface": "#1d1b20",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "outline": "#7a7582",
+                        "on-tertiary-container": "#503d00",
+                        "tertiary-fixed": "#ffdf93",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f2ecf4",
+                        "on-secondary-container": "#645a7d",
+                        "on-primary-fixed-variant": "#4f378a",
+                        "tertiary-container": "#c9a74d",
+                        "surface-variant": "#e6e0e9",
+                        "surface-container-low": "#f8f2fa",
+                        "primary-container": "#6750a4",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#ece6ee",
+                        "surface-tint": "#6750a4",
+                        "secondary-fixed-dim": "#cdc0e9",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#1f1635",
+                        "surface-dim": "#ded8e0",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "surface": "#fdf7ff",
+                        "background": "#fdf7ff",
+                        "surface-container-highest": "#e6e0e9",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e9ddff",
+                        "inverse-on-surface": "#f5eff7",
+                        "on-primary-fixed": "#22005d",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-md": "16px",
+                        "stack-xs": "4px",
+                        "margin-desktop": "64px",
+                        "base": "8px",
+                        "stack-lg": "32px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-md": ["Roboto Flex"],
+                        "label-sm": ["Fira Sans"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-lg": ["Roboto Flex"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky bg-surface/60 backdrop-blur-[12px] border-b border-white/30 shadow-sm z-50 h-20">
+<div class="flex justify-between items-center px-margin-desktop h-full w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-gutter">
+<span class="font-display-lg text-display-lg text-primary">Emerald Housing</span>
+<nav class="hidden md:flex gap-stack-lg ml-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Browse Properties</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Marketplace</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Dispute Resolution</a>
+</nav>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="p-2 rounded-lg hover:bg-primary/10 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-primary/20">
+<img alt="Customer profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZggZsswwNtTIEGdm0kBTncjn_i4J9WU4eLzDIIVyEHrSgL6fgY4E2h1wWKojlVHVJhfy4t4jm8MOjeUfbmIl9A1g4n6KTqVMG5_a_vo8Gi-JET-MYHY5xnvMjLvEtG-eEC3NY0xxnocuSeppL4_kynooyMBNyrgyq6BGFOKwskZUr76gWpd7noq0Fmz79R0d6E8KTX4sLI9bC-uunry7Jwdb9nJ773T0V8ImGVmIIP1A6uTbo95J8372eQjrxXxx3xmxMyCBitio"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-80px)] overflow-hidden">
+<!-- Left Column: Case Details (60%) -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-gutter space-y-stack-lg bg-surface-container-low/30">
+<div class="max-w-4xl mx-auto space-y-stack-lg">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h1 class="font-headline-md text-headline-md text-primary">Dispute Case #EH-88921</h1>
+<p class="text-on-surface-variant">Assigned Mediator: Sarah Jenkins • Filed Oct 12, 2023</p>
+</div>
+<div class="px-4 py-2 bg-error-container text-on-error-container rounded-full text-label-sm font-label-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+                        AWAITING MEDIATION
+                    </div>
+</div>
+<!-- Dispute Parties Bento Section -->
+<section class="grid grid-cols-2 gap-gutter">
+<!-- Tenant Card -->
+<div class="glass-card p-6 rounded-xl flex items-start gap-4">
+<div class="w-16 h-16 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-3xl">person</span>
+</div>
+<div class="flex-1">
+<span class="text-label-sm font-label-sm text-secondary tracking-wider">TENANT (PLAINTIFF)</span>
+<h3 class="font-headline-md text-lg mt-1">Marcus Thorne</h3>
+<p class="text-body-md text-on-surface-variant">Lease: Premium City Suite 402</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container rounded-full text-label-sm">Rating: 4.8★</span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-label-sm">Verified ID</span>
+</div>
+</div>
+</div>
+<!-- Owner Card -->
+<div class="glass-card p-6 rounded-xl flex items-start gap-4">
+<div class="w-16 h-16 rounded-xl bg-tertiary-container flex items-center justify-center text-on-tertiary-container shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-3xl">real_estate_agent</span>
+</div>
+<div class="flex-1">
+<span class="text-label-sm font-label-sm text-tertiary tracking-wider">PROPERTY OWNER (DEFENDANT)</span>
+<h3 class="font-headline-md text-lg mt-1">Luxe Living Estates</h3>
+<p class="text-body-md text-on-surface-variant">Owner ID: LLE-99120</p>
+<div class="mt-4 flex gap-2">
+<span class="px-3 py-1 bg-surface-container rounded-full text-label-sm">Corporate Tier</span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-label-sm">24 Properties</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Transaction Details Card -->
+<section class="glass-card p-gutter rounded-xl">
+<div class="flex items-center gap-2 mb-6 text-primary">
+<span class="material-symbols-outlined">receipt_long</span>
+<h2 class="font-headline-md text-headline-md">Transaction &amp; Claim Summary</h2>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<div>
+<p class="text-label-sm text-on-surface-variant mb-1">Disputed Amount</p>
+<p class="text-headline-md text-primary">$2,450.00</p>
+<p class="text-label-sm text-error mt-1 font-medium">Security Deposit Withheld</p>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant mb-1">Lease Period</p>
+<p class="text-body-lg font-semibold">Jan 2023 - Sep 2023</p>
+<p class="text-label-sm text-on-surface-variant mt-1">Ended: Sept 30, 2023</p>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant mb-1">Original Rent</p>
+<p class="text-body-lg font-semibold">$3,200.00 / month</p>
+<p class="text-label-sm text-on-surface-variant mt-1">Paid via Direct Bank Transfer</p>
+</div>
+</div>
+<div class="mt-8 p-4 bg-primary/5 rounded-lg border-l-4 border-primary">
+<p class="font-label-sm text-primary uppercase tracking-widest mb-1">Claim Reason</p>
+<p class="text-body-md italic text-on-surface">"The owner withheld the entire security deposit citing floor damages that were present during the initial walkthrough. I have timestamped photos from the move-in date."</p>
+</div>
+</section>
+<!-- Evidence & Notes Gallery -->
+<section class="space-y-stack-md">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">perm_media</span>
+<h2 class="font-headline-md text-headline-md">Evidence Documentation</h2>
+</div>
+<button class="text-primary font-label-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">download</span> Download All Bundle
+                        </button>
+</div>
+<div class="grid grid-cols-3 gap-stack-md">
+<div class="group relative aspect-square rounded-xl overflow-hidden glass-card cursor-pointer border-primary/20">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A detailed high-angle photograph showing a small area of scuffed hardwood flooring near a doorway in a sunlit modern apartment. The lighting is natural and bright, highlighting the texture of the wood. The image has a professional, evidence-style clarity, maintaining a clean and modern aesthetic with a purple-toned architectural finish in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABBG0bTo99VAGrQjScCeexPlCEMbGCXMM-BjENS82P5nLQQ0V9rM0SGKsR3yG_li-Pw4NXgWP08D6-BYqMmBdo8igoSaTIWI8BkG-51cBhTpnmAJzUoymFY7qr1B9thdxmvwSIPZhLSS-_aIgWn8NoQrQVvrtfR6qi7kTwMWCCva8bqqE7DMKIHvqdtKmfeE4SSRpYR7jjqGPwTqkMut__8AM1hFCXv6HSDz56MzXxasKpUuzLzQVeOPrqIo_Hpy77h7ERkXRdWE4"/>
+<div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-label-sm">Initial_Walkthrough_Floor.jpg</p>
+</div>
+</div>
+<div class="group relative aspect-square rounded-xl overflow-hidden glass-card cursor-pointer border-primary/20">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A macro photograph of a signed legal rental agreement document on a sleek white desk. A designer fountain pen rests beside the paper. The scene is illuminated with a soft, cool studio light, creating a professional and trustworthy legal atmosphere. The color palette is dominated by neutral whites and grays with subtle purple reflections from the digital interface nearby." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa7cF3i1DhjoQFTY9cVn5VTIFrsbgnQ4BHhD2ESy5uOjYcqjNib1uKZji4nYtbnkloRGhqgW4Q7dcppCI3zfSD6MZ7sBnPwwt3BoQjviLrosP_3T0JHhy1b8plQ9zQ0ZCfsXWeTGZT64WQXK77hA_2wXGfmvOWWWlj6q-8LqEVA6h5MxtoW-Q75_B-pyfhlp9Pbg-_oE1VMBdy43LnO0z9gFc2HbMTZqV3hqSF4NlqfZvha46oCC6MPSdXX4ZK0i-JROrTPrB4NtE"/>
+<div class="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-black/80 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity">
+<p class="text-label-sm">Lease_Agreement_Page_12.pdf</p>
+</div>
+</div>
+<div class="group relative aspect-square rounded-xl overflow-hidden glass-card cursor-pointer border-primary/20 bg-primary/5 flex flex-col items-center justify-center border-dashed border-2">
+<span class="material-symbols-outlined text-4xl text-primary/40 mb-2">add_circle</span>
+<p class="text-label-sm text-primary/60">Upload New Evidence</p>
+</div>
+</div>
+</section>
+<div class="h-10"></div> <!-- Padding bottom -->
+</div>
+</main>
+<!-- Right Column: Panel (40%) -->
+<aside class="w-[450px] bg-surface-container-high/60 backdrop-blur-[12px] border-l border-white/30 flex flex-col shadow-md">
+<!-- Resolution Actions Panel -->
+<section class="p-gutter border-b border-outline-variant">
+<h2 class="font-headline-md text-lg text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined">gavel</span> Resolution Actions
+                </h2>
+<div class="space-y-3">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">check_circle</span> Approve Full Refund
+                    </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold text-label-sm flex items-center justify-center gap-2 hover:bg-secondary-container/80 transition-all">
+<span class="material-symbols-outlined text-base">balance</span> Partial Settle
+                        </button>
+<button class="py-3 bg-error-container text-on-error-container rounded-xl font-bold text-label-sm flex items-center justify-center gap-2 hover:bg-error-container/80 transition-all">
+<span class="material-symbols-outlined text-base">block</span> Deny Claim
+                        </button>
+</div>
+<button class="w-full py-2 border border-outline text-on-surface-variant rounded-xl text-label-sm font-label-sm hover:bg-surface-variant transition-all">
+                        Request Additional Information
+                    </button>
+</div>
+</section>
+<!-- Internal Chat Log -->
+<section class="flex-1 flex flex-col overflow-hidden">
+<div class="p-4 bg-primary/10 flex justify-between items-center">
+<span class="font-label-sm text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-base">lock</span> INTERNAL INVESTIGATOR LOG
+                    </span>
+<span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded-full">EYES ONLY</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-gutter space-y-4 font-code-sm text-code-sm">
+<div class="p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
+<div class="flex justify-between items-center mb-1">
+<span class="font-bold text-primary">System Automator</span>
+<span class="text-[10px] text-outline">10:42 AM</span>
+</div>
+<p class="text-on-surface-variant">Evidence analyzed: Floor scratch patterns match standard furniture movement. Depth analysis: &lt; 0.5mm. Likely normal wear and tear.</p>
+</div>
+<div class="p-3 rounded-lg bg-primary-container/10 border border-primary/20 ml-4">
+<div class="flex justify-between items-center mb-1">
+<span class="font-bold text-primary">Sarah Jenkins</span>
+<span class="text-[10px] text-outline">11:15 AM</span>
+</div>
+<p class="text-on-surface-variant">Cross-referenced with 2022 move-in report. Photo #8 shows similar shadowing in the foyer area. Tenant's claim appears substantiated.</p>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/30">
+<div class="flex justify-between items-center mb-1">
+<span class="font-bold text-primary">Compliance Bot</span>
+<span class="text-[10px] text-outline">01:30 PM</span>
+</div>
+<p class="text-on-surface-variant">Checked local jurisdiction (Metro District). Withholding deposit for "normal wear and tear" is a violation of Statute 44-B.</p>
+</div>
+</div>
+<!-- Input area -->
+<div class="p-gutter border-t border-outline-variant bg-surface-container-low">
+<div class="relative">
+<textarea class="w-full p-4 rounded-xl border border-outline-variant bg-white/50 focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none font-code-sm" placeholder="Type internal note (Ctrl + Enter to send)..." rows="3"></textarea>
+<div class="absolute bottom-3 right-3 flex gap-2">
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<button class="p-2 bg-primary text-on-primary rounded-lg shadow-md hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</aside>
+</div>
+<!-- Footer Mini -->
+<footer class="fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant py-2 px-margin-desktop z-50">
+<div class="flex justify-between items-center text-on-surface-variant text-[12px]">
+<span>© 2024 Emerald Housing Multi-Tenant Platform</span>
+<div class="flex gap-4">
+<a class="hover:text-primary" href="#">System Status: Optimal</a>
+<a class="hover:text-primary" href="#">Encrypted Session</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for textarea focus
+        const textarea = document.querySelector('textarea');
+        textarea.addEventListener('focus', () => {
+            textarea.parentElement.parentElement.classList.add('bg-primary/5');
+        });
+        textarea.addEventListener('blur', () => {
+            textarea.parentElement.parentElement.classList.remove('bg-primary/5');
+        });
+
+        // Simulating a dynamic update for the log
+        textarea.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter' && textarea.value.trim() !== '') {
+                const chatContainer = document.querySelector('.custom-scrollbar');
+                const newNote = document.createElement('div');
+                newNote.className = 'p-3 rounded-lg bg-primary-container/10 border border-primary/20 ml-4 animate-in fade-in slide-in-from-bottom-2 duration-300';
+                newNote.innerHTML = `
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-primary">Sarah Jenkins</span>
+                        <span class="text-[10px] text-outline">Just now</span>
+                    </div>
+                    <p class="text-on-surface-variant">${textarea.value}</p>
+                `;
+                chatContainer.appendChild(newNote);
+                textarea.value = '';
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        });
+    </script>
+</body></html>
